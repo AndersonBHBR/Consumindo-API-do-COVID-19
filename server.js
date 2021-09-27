@@ -9,7 +9,7 @@ app.use(cors())
 app.get('/', async(req, res) => {
 
     // response é a resposta do axios MAS eu tiro o data de dentro do response
-    const { data } = await axios('https://api.covid19api.com/countries')
+    const { data } = await axios('https://data.covid19india.org/v4/min/data.min.json')
     return res.json(data)
 })
 

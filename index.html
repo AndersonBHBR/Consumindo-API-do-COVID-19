@@ -29,21 +29,27 @@
         }
         getContent()
 
-        function show(users) {
+        function show(states) {
             let output = ''
             
             output += `<table>`
             output += `<tr>`
-            output += `<td><b>Países</b></td>`
-            output += `<td><b>URL</b></td>`
-            output += `<td><b>Sigla</b></td>`
+            output += `<td><b>Estado</b></td>`
+            output += `<td><b>Confirmados</b></td>`
+            output += `<td><b>Mortos</b></td>`
+            output += `<td><b>Recuperados</b></td>`
+            output += `<td><b>Testados</b></td>`
+            output += `<td><b>Vacinados</b></td>`
             
             output += `</tr>`
-            for (let user of users) { 
-                output += `<tr>`             
-                output += `<td>${user.Country}</td>`
-                output += `<td>${user.Slug}</td>`
-                output += `<td>${user.ISO2}</td>`
+            for (let code in states) { 
+                output += `<tr>`
+                output += `<td>${code}</td>`             
+                output += `<td>${states[code].total.confirmed}</td>`
+                output += `<td>${states[code].total.deceased}</td>`
+                output += `<td>${states[code].total.recovered}</td>`
+                output += `<td>${states[code].total.tested}</td>`
+                output += `<td>${states[code].total.vaccinated1}</td>`
                 
                 output += `</tr>`
             }
