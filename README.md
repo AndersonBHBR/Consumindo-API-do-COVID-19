@@ -3,4 +3,6 @@
 
 O programa trabalha com Node.js (cors, express e axios) e HTML.
 
-O API utilizado é https://data.covid19india.org/v4/min/data.min.json
+O API utilizado e definitivo é https://data.covid19india.org/v4/min/data.min.json
+
+O API de teste é https://jsonplaceholder.typicode.com/users

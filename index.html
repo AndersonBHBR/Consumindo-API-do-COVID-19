@@ -1,12 +1,19 @@
 <html>
     <head>
         <title>Consumindo API</title>
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     </head>
 
     <body>
-        <main></main>
+        <div id="corpo">
+            <main></main>
+        </div>
+        <p>
+            <input type="button" value="Criar PDF" onclick="clickImprimirPDF()">
+        </p>
     </body>
 
+    
     <script>
 
         async function getContent() {
@@ -17,20 +24,50 @@
 
                 show(data)
             } catch (error) {
-                console.log("ERROU!!!")
+                console.log(error)
             }            
         }
         getContent()
 
         function show(users) {
             let output = ''
-
-            for (let user of users) {
-                output += `<li>${user.total}</li>`
+            
+            output += `<table>`
+            output += `<tr>`
+            output += `<td><b>Países</b></td>`
+            output += `<td><b>URL</b></td>`
+            output += `<td><b>Sigla</b></td>`
+            
+            output += `</tr>`
+            for (let user of users) { 
+                output += `<tr>`             
+                output += `<td>${user.Country}</td>`
+                output += `<td>${user.Slug}</td>`
+                output += `<td>${user.ISO2}</td>`
+                
+                output += `</tr>`
             }
 
+            output += `</table>`
+            
             document.querySelector('main').innerHTML = output
         }
     </script>
 
+    <script>
+        function clickImprimirPDF(){
+            var pegar_dados = document.getElementById('corpo').innerHTML;
+
+            var janela = window.open('','','width=800,height=600');
+            janela.document.write('<html><head>');
+            janela.document.write('<title>PDF</title></head>');
+            janela.document.write('<body>');
+            janela.document.write(pegar_dados);
+            janela.document.write('</body></html>');
+            janela.document.write('<html><head>');
+            janela.document.close();
+            janela.print();
+                                          
+        }
+    </script>
 </html>
